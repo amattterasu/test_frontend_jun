@@ -1,0 +1,26 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 300px;
+}
+
+tr:first-child {
+  border-top: 1px solid #adadad;
+  background: #fafbfc;
+}
+
+tr {
+  border-bottom: 1px solid #adadad;
+  padding: .35rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+tr:first-child::after {
+  content: '';
+}
+
+td, th  {
+  padding: .625rem;
+}
+
