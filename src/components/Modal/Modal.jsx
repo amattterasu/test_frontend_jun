@@ -6,7 +6,6 @@ import './Modal.scss'
 class Modal extends React.Component {
 
   state = {
-    isOpen: false,
     person: {
       firstName: '',
       lastName: ''
@@ -23,6 +22,29 @@ class Modal extends React.Component {
     })
   }
 
+  onSubmit = event => {
+    event.preventDefault();
+
+    if (this.state.person.firstName && this.state.person.lastName) {
+
+      fetch(`http://localhost:3000/persons`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: null,
+            firstName: this.state.person.firstName,
+            lastName: this.state.person.lastName
+          })
+        }
+      )
+        .then(() => this.props.refreshState())
+      this.props.setOpen(false);
+    }
+  }
+
   render() {
     return (
       <>
@@ -33,7 +55,7 @@ class Modal extends React.Component {
               <div className='modal__title'>
                 {this.props.title}
               </div>
-              <div className='modal__content'>
+              <form onSubmit={this.onSubmit} className='modal__content'>
                 <button className='modal__btn' onClick={() => this.props.setOpen(false)}>Назад к списку</button>
 
                 <input type={this.props.type}
@@ -46,8 +68,13 @@ class Modal extends React.Component {
                        onChange={event => this.changeHandler(event.target.value, 'lastName')}
                        placeholder={this.props.placeholder.lastName}
                 />
-                <Button className='modal__btn-primary' type='primary'>Сохранить</Button>
-              </div>
+                <Button className='modal__btn-primary'
+                        type='primary'
+                        onClick={() => {
+                        }}
+                        htmlType='submit'
+                >Сохранить</Button>
+              </form>
             </div>
           </div>
         }

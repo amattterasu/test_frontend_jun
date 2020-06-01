@@ -34,7 +34,6 @@ const PersonList = props => {
 
   const deletePerson = personId => {
    fetch(`http://localhost:3000/persons/${personId}`, {method: 'DELETE'})
-     .then(res => res.json())
      .then(props.setPersons(props.persons.filter(o => o.id !== personId)))
   }
 
@@ -44,7 +43,9 @@ const PersonList = props => {
              setOpen={setOpen}
              title={title}
              values={values}
-             placeholder={placeholder}/>
+             placeholder={placeholder}
+             refreshState={props.refreshState}
+      />
 
       <div className='table'>
         <div className='table__title'>
@@ -95,6 +96,5 @@ const PersonList = props => {
       </div>
     </>
   )
-
 }
 export default PersonList;
