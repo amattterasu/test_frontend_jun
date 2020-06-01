@@ -36,6 +36,6 @@ const App = () => {
       <PersonList persons={persons} setPersons={setPersons} refreshState={refreshState} notify={notify}/>
     </div>
   );
-}
+};
 
 export default App;
