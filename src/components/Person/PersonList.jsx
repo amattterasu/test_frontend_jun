@@ -29,12 +29,22 @@ const PersonList = props => {
     setValues({
       firstName: person.firstName,
       lastName: person.lastName
-    })
+    });
+  }
+
+  const deletePerson = personId => {
+   fetch(`http://localhost:3000/persons/${personId}`, {method: 'DELETE'})
+     .then(res => res.json())
+     .then(props.setPersons(props.persons.filter(o => o.id !== personId)))
   }
 
   return (
     <>
-      <Modal isOpen={isOpen} setOpen={setOpen} title={title} values={values} placeholder={placeholder}/>
+      <Modal isOpen={isOpen}
+             setOpen={setOpen}
+             title={title}
+             values={values}
+             placeholder={placeholder}/>
 
       <div className='table'>
         <div className='table__title'>
@@ -60,18 +70,19 @@ const PersonList = props => {
                 <div className='table__btn'>
 
                   <Button
-                  onClick={() => editPerson(person)}>
+                    onClick={() => editPerson(person)}
+                  >
                     <EditTwoTone/>
                   </Button>
 
-                  <Button>
+                  <Button
+                    onClick={() => deletePerson(person.id)}
+                  >
                     <DeleteOutlined style={{color: 'red'}}/>
                   </Button>
-
                 </div>
-
               </div>
-             )
+            )
           })
         }
         <Button

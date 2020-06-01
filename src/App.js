@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <PersonList persons={persons}/>
+      <PersonList persons={persons}  setPersons={setPersons}/>
     </div>
   );
 }
