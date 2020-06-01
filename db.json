@@ -17,7 +17,7 @@
     },
     {
       "id": 4,
-      "firstName": "Bob1",
+      "firstName": "Bob",
       "lastName": "Robsob"
     },
     {
@@ -27,13 +27,13 @@
     },
     {
       "id": 6,
-      "firstName": "Michael",
-      "lastName": "Robinson"
+      "firstName": "New",
+      "lastName": "Person"
     },
     {
       "id": 7,
-      "firstName": "Jennifer",
-      "lastName": "Pinsker"
+      "firstName": "New",
+      "lastName": "Person"
     }
   ]
 }

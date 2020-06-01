@@ -22,6 +22,8 @@
     padding: .35rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: auto;
   }
 
   &__btn-primary {
