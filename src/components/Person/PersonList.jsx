@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './PersonList.scss'
 import {Button} from "antd";
-import {EditTwoTone, DeleteOutlined} from '@ant-design/icons'
+import {EditTwoTone, DeleteOutlined} from '@ant-design/icons';
 
 import Modal from "../Modal/Modal";
 
@@ -24,7 +24,7 @@ const PersonList = props => {
     })
     setValues({});
     setMethod('POST');
-  }
+  };
 
   const editPerson = person => {
     setOpen(true);
@@ -35,7 +35,7 @@ const PersonList = props => {
     });
     setMethod('PUT');
     setId(person.id);
-  }
+  };
 
   async function deletePerson(personId) {
     try {
@@ -46,7 +46,6 @@ const PersonList = props => {
     } catch (e) {
       props.notify('warning', 'Неверный запрос')
     }
-
   }
 
   return (
@@ -67,21 +66,15 @@ const PersonList = props => {
           <div className='table__item'>Имя</div>
           <div className='table__item'>Фамилия</div>
         </div>
-        {
-          props.persons.map(person => {
-
+        {props.persons.map(person => {
             return (
               <div className='table__row' key={person.id}>
 
                 <div className='table__item'>
-                  {
-                    person.firstName
-                  }
+                  {person.firstName}
                 </div>
                 <div className='table__item'>
-                  {
-                    person.lastName
-                  }
+                  {person.lastName}
                 </div>
                 <div className='table__btn'>
 
@@ -94,7 +87,7 @@ const PersonList = props => {
                   <Button
                     onClick={() => deletePerson(person.id)}
                   >
-                    <DeleteOutlined style={{color: 'red'}}/>
+                    <DeleteOutlined style={ {color: 'red'} } />
                   </Button>
                 </div>
               </div>
@@ -104,7 +97,7 @@ const PersonList = props => {
         <Button
           className='table__btn-primary'
           type='primary'
-          onClick={() => addPerson()}
+          onClick={ () => addPerson() }
         >
           Добавить сотрудника
         </Button>

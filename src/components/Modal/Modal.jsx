@@ -5,18 +5,18 @@ import './Modal.scss'
 
 const Modal = props => {
 
-  const [person, setPerson] = useState({firstName: '', lastName: ''});
+  const [person, setPerson] = useState({ firstName: '', lastName: '' });
 
   const changeHandler = (value, controlName) => {
 
     const copy = props.values;
     copy[controlName] = value;
     setPerson({...copy});
-  }
+  };
 
   const onSubmit = event => {
     event.preventDefault();
-  }
+  };
 
   async function onClickHandler(method, id = '') {
     if (person.firstName && person.lastName) {
@@ -35,11 +35,11 @@ const Modal = props => {
             })
           }
         )
-        await props.refreshState()
+        await props.refreshState();
         await props.setOpen(false);
         await setPerson({})
       } catch (e) {
-        props.notify('error', 'Ошибка запроса')
+        props.notify('error', 'Ошибка запроса');
       }
     }
   }
@@ -78,7 +78,6 @@ const Modal = props => {
       }
     </>
   );
-
 }
 
 export default Modal;
