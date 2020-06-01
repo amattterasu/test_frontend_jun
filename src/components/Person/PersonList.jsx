@@ -37,9 +37,16 @@ const PersonList = props => {
     setId(person.id);
   }
 
-  const deletePerson = personId => {
-   fetch(`http://localhost:4000/persons/${personId}`, {method: 'DELETE'})
-     .then(props.setPersons(props.persons.filter(o => o.id !== personId)))
+  async function deletePerson(personId) {
+    try {
+      await fetch(`http://localhost:4000/persons/${personId}`,
+        {method: 'DELETE'});
+      await props.setPersons(props.persons.filter(o => o.id !== personId));
+
+    } catch (e) {
+      props.notify('warning', 'Неверный запрос')
+    }
+
   }
 
   return (
@@ -52,6 +59,7 @@ const PersonList = props => {
              refreshState={props.refreshState}
              method={method}
              id={id}
+             notify={props.notify}
       />
 
       <div className='table'>

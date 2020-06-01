@@ -1,19 +1,28 @@
 import React, {useEffect, useState} from 'react';
+
+import {toast} from 'react-toastify';
 import './App.css'
 import PersonList from "./components/Person/PersonList";
+
+toast.configure();
 
 const App = () => {
 
   const [persons, setPersons] = useState([])
 
-  const refreshState = () => {
-    return (
-      fetch('http://localhost:4000/persons')
-        .then(res => res.json())
-        .then(persons => {
-          setPersons(persons)
-        })
-    )
+  const notify = (method, text) => {
+    toast[method](`${text}`, {autoClose: 1500})
+  }
+
+  async function refreshState() {
+    try {
+     const response = await fetch('http://localhost:4000/persons');
+     const persons = await response.json();
+     setPersons(persons)
+    notify('success', 'Успешно')
+    } catch (e) {
+      notify('warning', 'Неверный запрос')
+    }
   }
 
   useEffect(() => {
@@ -22,7 +31,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <PersonList persons={persons} setPersons={setPersons} refreshState={refreshState}/>
+      <PersonList persons={persons} setPersons={setPersons} refreshState={refreshState} notify={notify}/>
     </div>
   );
 }
