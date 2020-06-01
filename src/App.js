@@ -8,7 +8,7 @@ const App = () => {
 
   const refreshState = () => {
     return (
-      fetch('http://localhost:3000/persons')
+      fetch('http://localhost:4000/persons')
         .then(res => res.json())
         .then(persons => {
           setPersons(persons)

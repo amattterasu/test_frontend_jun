@@ -38,7 +38,7 @@ const PersonList = props => {
   }
 
   const deletePerson = personId => {
-   fetch(`http://localhost:3000/persons/${personId}`, {method: 'DELETE'})
+   fetch(`http://localhost:4000/persons/${personId}`, {method: 'DELETE'})
      .then(props.setPersons(props.persons.filter(o => o.id !== personId)))
   }
 

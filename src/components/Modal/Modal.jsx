@@ -29,7 +29,7 @@ class Modal extends React.Component {
   onClickHandler = (method, id = '') => {
     if (this.state.person.firstName && this.state.person.lastName) {
 
-      fetch(`http://localhost:3000/persons/${id}`,
+      fetch(`http://localhost:4000/persons/${id}`,
         {
           method: method,
           headers: {
