@@ -1,5 +1,8 @@
 import React from 'react';
-import './PersonList.css'
+
+import './PersonList.scss'
+import {Button} from "antd";
+import {EditTwoTone, DeleteOutlined} from  '@ant-design/icons'
 
 const PersonList = props => {
 
@@ -23,15 +26,15 @@ const PersonList = props => {
                   person.lastName
                 }
               </div>
-              <div>
-                <button>1</button>
-                <button>2</button>
+              <div className='table__btn'>
+                <Button><EditTwoTone /></Button>
+                <Button><DeleteOutlined style={{color: 'red'}}/></Button>
               </div>
             </div>
           )
         })
       }
-      <button>Добавить сотрудника</button>
+      <Button className='table__btn-primary' type='primary'> Добавить сотрудника </Button>
     </div>
   );
 };
