@@ -12,6 +12,8 @@ const PersonList = props => {
   const [title, setTitle] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [values, setValues] = useState({});
+  const [method, setMethod] = useState('');
+  const [id, setId] = useState('');
 
   const addPerson = () => {
     setOpen(true);
@@ -21,6 +23,7 @@ const PersonList = props => {
       lastName: 'Введите фамилию сотрудника'
     })
     setValues({});
+    setMethod('POST');
   }
 
   const editPerson = person => {
@@ -30,6 +33,8 @@ const PersonList = props => {
       firstName: person.firstName,
       lastName: person.lastName
     });
+    setMethod('PUT');
+    setId(person.id);
   }
 
   const deletePerson = personId => {
@@ -45,6 +50,8 @@ const PersonList = props => {
              values={values}
              placeholder={placeholder}
              refreshState={props.refreshState}
+             method={method}
+             id={id}
       />
 
       <div className='table'>

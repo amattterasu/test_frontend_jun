@@ -24,12 +24,14 @@ class Modal extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
+  }
 
+  onClickHandler = (method, id = '') => {
     if (this.state.person.firstName && this.state.person.lastName) {
 
-      fetch(`http://localhost:3000/persons`,
+      fetch(`http://localhost:3000/persons/${id}`,
         {
-          method: 'POST',
+          method: method,
           headers: {
             'Content-Type': 'application/json'
           },
@@ -70,10 +72,10 @@ class Modal extends React.Component {
                 />
                 <Button className='modal__btn-primary'
                         type='primary'
-                        onClick={() => {
-                        }}
+                        onClick={() => this.onClickHandler(this.props.method, this.props.id)}
                         htmlType='submit'
-                >Сохранить</Button>
+                >
+                  Сохранить</Button>
               </form>
             </div>
           </div>
